@@ -4,7 +4,7 @@
 # ==========================================================
 backend:
   name: github
-  repo: TU-USUARIO/TU-REPO            # <-- CAMBIAR (repositorio de GitHub)
+  repo: gomezalberto2001-byte/ALBERTO           # <-- CAMBIAR (repositorio de GitHub)
   branch: main
   base_url: https://TU-WEB.vercel.app  # <-- CAMBIAR (dominio de la web, sin barra final)
   auth_endpoint: api/auth
