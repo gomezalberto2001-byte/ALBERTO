@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stock de coches de ocasión · [NOMBRE] MOTOR</title>
+  <meta name="description" content="Todos nuestros coches de ocasión: revisados, con ITV al día y disponibles para prueba.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Crect width='4' height='12' fill='%230066b1'/%3E%3Crect x='4' width='4' height='12' fill='%231c69d4'/%3E%3Crect x='8' width='4' height='12' fill='%23e22718'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body data-page="stock">
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="logo" href="/" aria-label="Inicio">
+      <span class="logo__text" data-negocio="nombre">[NOMBRE] MOTOR</span>
+      <span class="stripe stripe--sm" aria-hidden="true"><span></span><span></span><span></span></span>
+    </a>
+    <button class="nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <div class="nav__menu" id="menu">
+      <nav class="nav__links" aria-label="Principal">
+        <a href="/stock" aria-current="page">Stock</a>
+        <a href="/#vender">Vende tu coche</a>
+        <a href="/#servicios">Financiación</a>
+        <a href="/#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn--sm" href="/#contacto" data-tel>Llamar</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container page-head stack">
+    <span class="caption"><a href="/" style="color:inherit">Inicio</a> / Stock</span>
+    <h1 class="display-xl">Nuestro stock.</h1>
+    <p class="intro" style="max-width:620px">Todos revisados, con ITV al día y disponibles para prueba. <span id="total"></span> coches ahora mismo.</p>
+  </section>
+
+  <section class="container">
+    <div class="filters">
+      <div class="tabs" id="tabs" role="tablist" aria-label="Categorías"></div>
+      <label class="sort label label-muted">Ordenar
+        <select class="select" id="orden">
+          <option value="reciente">Más recientes</option>
+          <option value="precio-asc">Precio: menor a mayor</option>
+          <option value="precio-desc">Precio: mayor a menor</option>
+          <option value="km">Menos kilómetros</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="container" style="padding-top:40px;padding-bottom:96px">
+    <div class="stack--sm" style="display:flex;flex-direction:column;margin-bottom:24px">
+      <span class="body-sm" id="count" aria-live="polite"></span>
+      <span class="body-sm" id="filtros-activos"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="band-soft">
+    <div class="container" style="padding-top:64px;padding-bottom:64px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px">
+      <div class="stack--sm" style="display:flex;flex-direction:column;max-width:720px">
+        <span class="stripe" aria-hidden="true" style="width:96px"><span></span><span></span><span></span></span>
+        <h2 class="display-sm" style="margin:0;text-transform:uppercase">¿No encuentras el que buscas?</h2>
+        <p class="body">Dinos marca, presupuesto y uso. Te lo buscamos.</p>
+      </div>
+      <a class="btn" href="/#contacto" data-wa="Hola, busco un coche: marca/modelo , presupuesto ">Escribir por WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" style="padding-top:40px">
+  <div class="container footer__bottom caption" style="margin-top:0;border-top:0;padding-top:0">
+    <span>© <span data-year>2026</span> <span data-negocio="nombre">[NOMBRE] MOTOR</span> · <span data-negocio="direccion">[DIRECCIÓN]</span>, <span data-negocio="ciudad">[CIUDAD]</span> · <span data-negocio="telefono">[TELÉFONO]</span></span>
+    <span>Aviso legal · Privacidad · Cookies</span>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

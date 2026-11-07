@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ficha del coche · [NOMBRE] MOTOR</title>
+  <meta name="description" content="Ficha del coche de ocasión.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Crect width='4' height='12' fill='%230066b1'/%3E%3Crect x='4' width='4' height='12' fill='%231c69d4'/%3E%3Crect x='8' width='4' height='12' fill='%23e22718'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body data-page="coche">
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="logo" href="/" aria-label="Inicio">
+      <span class="logo__text" data-negocio="nombre">[NOMBRE] MOTOR</span>
+      <span class="stripe stripe--sm" aria-hidden="true"><span></span><span></span><span></span></span>
+    </a>
+    <button class="nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <div class="nav__menu" id="menu">
+      <nav class="nav__links" aria-label="Principal">
+        <a href="/stock" aria-current="page">Stock</a>
+        <a href="/#vender">Vende tu coche</a>
+        <a href="/#servicios">Financiación</a>
+        <a href="/#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn--sm" href="/#contacto" data-tel>Llamar</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- GALERÍA + RESUMEN -->
+  <section class="container" style="padding-top:40px;padding-bottom:64px">
+    <p class="caption" style="margin:0 0 24px"><a href="/" style="color:inherit">Inicio</a> / <a href="/stock" style="color:inherit">Stock</a> / <span id="c-crumb"></span></p>
+    <div class="detail">
+      <div class="detail__gallery">
+        <div class="gallery__main">
+          <img id="g-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="1290" height="695">
+          <button class="icon-btn icon-btn--prev" id="g-prev" type="button" aria-label="Foto anterior"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button class="icon-btn icon-btn--next" id="g-next" type="button" aria-label="Foto siguiente"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="thumbs" id="g-thumbs"></div>
+      </div>
+
+      <aside class="detail__aside">
+        <span class="stripe" aria-hidden="true" style="width:96px"><span></span><span></span><span></span></span>
+        <span class="label label-muted" id="c-cat"></span>
+        <h1 class="display-lg" id="c-nombre"></h1>
+        <p class="intro" id="c-sub"></p>
+        <div class="price-box">
+          <span class="price-xl" id="c-precio"></span>
+          <span class="body-sm" id="c-resumen"></span>
+          <span class="body-sm" id="c-desde">Desde <strong style="font-weight:700;color:#fff" id="c-cuota"></strong> financiado</span>
+        </div>
+        <div class="stack--sm" style="display:flex;flex-direction:column">
+          <a class="btn btn--block" href="#contacto">Reservar prueba</a>
+          <a class="btn btn--subtle btn--block" id="c-wa" href="#contacto">Preguntar por WhatsApp</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FICHA TÉCNICA -->
+  <section class="border-top">
+    <div class="container section stack" style="gap:40px">
+      <h2 class="display-md">Ficha técnica.</h2>
+      <div class="cells" id="c-specs"></div>
+    </div>
+  </section>
+
+  <!-- EQUIPAMIENTO + CALCULADORA -->
+  <section class="container split" style="padding-bottom:96px">
+    <div class="stack">
+      <h2 class="display-md">Equipamiento.</h2>
+      <ul class="equip" id="c-equipo"></ul>
+    </div>
+    <div class="calc" id="calc">
+      <h2 class="display-sm">Calcula tu cuota.</h2>
+      <label class="label" style="display:flex;flex-direction:column;gap:12px">
+        <span style="display:flex;justify-content:space-between;gap:16px"><span>Entrada</span><span id="entrada-txt" style="font-weight:300;letter-spacing:0"></span></span>
+        <input type="range" id="entrada" min="0" max="3000" step="250" value="1000">
+      </label>
+      <div class="stack--sm" style="display:flex;flex-direction:column">
+        <span class="label">Plazo (meses)</span>
+        <div class="plazos" id="plazos"></div>
+      </div>
+      <div class="cuota">
+        <span class="label label-muted">Cuota</span>
+        <span class="price-xl"><span id="cuota"></span><span style="font-size:18px;font-weight:300;color:#bbb">/mes</span></span>
+      </div>
+      <p class="caption" style="margin:0;color:#bbb">Cálculo orientativo con TIN <span id="tin"></span> %. Sujeto a aprobación de la entidad financiera.</p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="band-soft">
+    <div class="container section split">
+      <div class="stack">
+        <h2 class="display-md">¿Te interesa este coche?</h2>
+        <p class="body">Déjanos tus datos y te llamamos para cerrar una prueba o resolver dudas.</p>
+      </div>
+      <form class="form" data-wa-form>
+        <label class="field label">Nombre
+          <input class="input" type="text" name="nombre" autocomplete="name" required>
+        </label>
+        <label class="field label">Teléfono
+          <input class="input" type="tel" name="teléfono" autocomplete="tel" required>
+        </label>
+        <label class="field label full">Mensaje
+          <textarea class="textarea" name="mensaje" id="c-msg" rows="4"></textarea>
+        </label>
+        <label class="check full">
+          <input type="checkbox" name="privacidad" required>
+          Acepto la política de privacidad.
+        </label>
+        <div class="full" style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+          <button class="btn" type="submit">Enviar</button>
+          <span class="form-ok body-sm" hidden>¡Gracias! Te contactamos en breve.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" style="padding-top:40px">
+  <div class="container footer__bottom caption" style="margin-top:0;border-top:0;padding-top:0">
+    <span>© <span data-year>2026</span> <span data-negocio="nombre">[NOMBRE] MOTOR</span> · <span data-negocio="direccion">[DIRECCIÓN]</span>, <span data-negocio="ciudad">[CIUDAD]</span> · <span data-negocio="telefono">[TELÉFONO]</span></span>
+    <span>Aviso legal · Privacidad · Cookies</span>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

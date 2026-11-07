@@ -1,0 +1,91 @@
+# ==========================================================
+#  Panel de gestión (Decap CMS) — se abre en tudominio/admin
+#  Cambia las 2 líneas marcadas con  <-- CAMBIAR  antes de usarlo
+# ==========================================================
+backend:
+  name: github
+  repo: TU-USUARIO/TU-REPO            # <-- CAMBIAR (repositorio de GitHub)
+  branch: main
+  base_url: https://TU-WEB.vercel.app  # <-- CAMBIAR (dominio de la web, sin barra final)
+  auth_endpoint: api/auth
+  commit_messages:
+    update: "Actualizar {{collection}} desde el panel"
+    uploadMedia: "Subir foto {{path}}"
+    deleteMedia: "Borrar foto {{path}}"
+
+locale: es
+site_url: https://TU-WEB.vercel.app
+display_url: https://TU-WEB.vercel.app
+logo_url: ""
+
+media_folder: img/coches
+public_folder: /img/coches
+
+collections:
+  - name: stock
+    label: Stock
+    editor: { preview: false }
+    files:
+      - name: coches
+        label: Coches en venta
+        file: content/coches.json
+        fields:
+          - label: Coches
+            name: coches
+            widget: list
+            label_singular: coche
+            add_to_top: true
+            summary: "{{fields.estado}} · {{fields.nombre}} · {{fields.precio}} €"
+            hint: "El orden de la lista es el orden en la web (arriba = más reciente). Arrastra para reordenar."
+            fields:
+              - { label: "Estado", name: estado, widget: select, options: ["Disponible", "Reservado", "Vendido"], default: "Disponible", hint: "Los vendidos no se muestran en la web." }
+              - { label: "Destacar en portada", name: destacado, widget: boolean, default: false, required: false }
+              - { label: "Nombre del anuncio", name: nombre, widget: string, hint: "Ej.: Peugeot 3008 2.0 HDi" }
+              - { label: "Identificador para la URL", name: id, widget: string, pattern: ["^[a-z0-9-]+$", "Solo minúsculas, números y guiones. Ej.: peugeot-3008-negro"], hint: "Único para cada coche. Ej.: peugeot-3008-negro" }
+              - { label: "Marca", name: marca, widget: string }
+              - { label: "Tipo", name: cat, widget: select, options: ["COMPACTO", "BERLINA", "SUV", "MONOVOLUMEN", "FAMILIAR", "FURGONETA", "DEPORTIVO", "MOTO"] }
+              - { label: "Precio (€)", name: precio, widget: number, value_type: int, min: 0, required: false, hint: "Vacío = sale 'Consultar'" }
+              - { label: "Año", name: anio, widget: number, value_type: int, min: 1950, max: 2100, required: false }
+              - { label: "Kilómetros", name: km, widget: number, value_type: int, min: 0, required: false }
+              - { label: "Combustible", name: combustible, widget: select, options: ["Gasolina", "Diésel", "Híbrido", "Híbrido enchufable", "Eléctrico", "GLP"] }
+              - { label: "Motor", name: motor, widget: string, required: false, hint: "Ej.: 1.6 TDCi" }
+              - { label: "Potencia (CV)", name: cv, widget: number, value_type: int, min: 0, required: false }
+              - { label: "Cambio", name: cambio, widget: select, options: ["Manual", "Automático"], required: false }
+              - { label: "Etiqueta DGT", name: etiqueta, widget: select, options: ["0", "ECO", "C", "B", "Sin etiqueta"], required: false }
+              - { label: "ITV hasta", name: itv, widget: string, required: false, hint: "Ej.: 2027 o 'Recién pasada'" }
+              - { label: "Color", name: color, widget: string, required: false }
+              - { label: "Llaves", name: llaves, widget: number, value_type: int, min: 0, required: false }
+              - label: "Fotos"
+                name: fotos
+                widget: list
+                hint: "La primera es la portada del anuncio. Mejor fotos apaisadas."
+                field: { label: "Foto", name: foto, widget: image, choose_url: false }
+              - { label: "Descripción corta", name: resumen, widget: text, required: false }
+              - label: "Equipamiento"
+                name: equipo
+                widget: list
+                required: false
+                field: { label: "Elemento", name: item, widget: string }
+
+  - name: ajustes
+    label: Datos del negocio
+    editor: { preview: false }
+    files:
+      - name: negocio
+        label: Datos de contacto
+        file: content/negocio.json
+        fields:
+          - { label: "Nombre comercial", name: nombre, widget: string }
+          - { label: "Teléfono (como se muestra)", name: telefono, widget: string, hint: "Ej.: 958 00 00 00" }
+          - { label: "Teléfono para llamar", name: telefonoLink, widget: string, required: false, hint: "Con prefijo y sin espacios. Ej.: +34958000000" }
+          - { label: "WhatsApp", name: whatsapp, widget: string, required: false, hint: "Solo números con prefijo, sin +. Ej.: 34600000000" }
+          - { label: "Email", name: email, widget: string, required: false }
+          - { label: "Dirección", name: direccion, widget: string }
+          - { label: "Localidad", name: ciudad, widget: string }
+          - { label: "Horario", name: horario, widget: string }
+          - { label: "Razón social y CIF", name: razonSocial, widget: string, required: false }
+          - { label: "Instagram (URL)", name: instagram, widget: string, required: false }
+          - { label: "Facebook (URL)", name: facebook, widget: string, required: false }
+          - { label: "Wallapop (URL)", name: wallapop, widget: string, required: false }
+          - { label: "Mapa de Google (URL de 'insertar mapa')", name: mapaEmbed, widget: string, required: false, hint: "Google Maps → Compartir → Insertar un mapa → copia solo lo que va dentro de src=\"…\"" }
+          - { label: "TIN para la calculadora (%)", name: tin, widget: number, value_type: float, min: 0, max: 30, step: 0.01 }
