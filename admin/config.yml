@@ -6,7 +6,7 @@ backend:
   name: github
   repo: gomezalberto2001-byte/ALBERTO           # <-- CAMBIAR (repositorio de GitHub)
   branch: main
-  base_url: https://TU-WEB.vercel.app  # <-- CAMBIAR (dominio de la web, sin barra final)
+  base_url: https://vehiculos-gonzalez.vercel.app  # <-- CAMBIAR (dominio de la web, sin barra final)
   auth_endpoint: api/auth
   commit_messages:
     update: "Actualizar {{collection}} desde el panel"
@@ -14,8 +14,8 @@ backend:
     deleteMedia: "Borrar foto {{path}}"
 
 locale: es
-site_url: https://TU-WEB.vercel.app
-display_url: https://TU-WEB.vercel.app
+site_url: https://vehiculos-gonzalez.vercel.app
+display_url: https://vehiculos-gonzalez.vercel.app
 logo_url: ""
 
 media_folder: img/coches
